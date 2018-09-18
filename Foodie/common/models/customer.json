@@ -6,8 +6,17 @@
     "validateUpsert": true
   },
   "properties": {},
+  "mixins": {
+    "TimeStamp": true
+  },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "comments": {
+      "type": "hasMany",
+      "model": "Comments",
+      "foreignKey": "customerId"
+    }
+  },
   "acls": [
     {
       "accessType": "*",
@@ -20,6 +29,12 @@
       "principalType": "ROLE",
       "principalId": "$authenticated",
       "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
     }
   ],
   "methods": {}
